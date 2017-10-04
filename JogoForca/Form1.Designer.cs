@@ -39,13 +39,13 @@
             this.lblVitorias = new System.Windows.Forms.Label();
             this.lblDerrotas = new System.Windows.Forms.Label();
             this.lblPartida = new System.Windows.Forms.Label();
-            this.forca1 = new JogoForca.Controles.Forca();
-            this.palavraControl = new JogoForca.Controles.PalavraControl();
-            this.graficoColunas1 = new JogoForca.Controles.GraficoColunas();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCustomizar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.forca1)).BeginInit();
+            this.graficoColunas1 = new JogoForca.Controles.GraficoColunas();
+            this.forca1 = new JogoForca.Controles.Forca();
+            this.palavraControl = new JogoForca.Controles.PalavraControl();
             ((System.ComponentModel.ISupportInitialize)(this.graficoColunas1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forca1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -173,6 +173,39 @@
             this.lblPartida.Text = "Partida: 0";
             this.lblPartida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Italic);
+            this.label4.Location = new System.Drawing.Point(-1, 425);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(165, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Desenvolvido por Allex Rodrigues";
+            // 
+            // btnCustomizar
+            // 
+            this.btnCustomizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCustomizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomizar.Location = new System.Drawing.Point(314, 289);
+            this.btnCustomizar.Name = "btnCustomizar";
+            this.btnCustomizar.Size = new System.Drawing.Size(82, 23);
+            this.btnCustomizar.TabIndex = 16;
+            this.btnCustomizar.TabStop = false;
+            this.btnCustomizar.Text = "Customizar";
+            this.btnCustomizar.UseMnemonic = false;
+            this.btnCustomizar.UseVisualStyleBackColor = true;
+            this.btnCustomizar.Click += new System.EventHandler(this.btnCustomizar_Click);
+            // 
+            // graficoColunas1
+            // 
+            this.graficoColunas1.Location = new System.Drawing.Point(226, 213);
+            this.graficoColunas1.Name = "graficoColunas1";
+            this.graficoColunas1.Size = new System.Drawing.Size(346, 70);
+            this.graficoColunas1.TabIndex = 14;
+            this.graficoColunas1.TabStop = false;
+            this.graficoColunas1.Total = 0;
+            // 
             // forca1
             // 
             this.forca1.Location = new System.Drawing.Point(12, 12);
@@ -196,38 +229,6 @@
             this.palavraControl.Text = "_  _  _  _  _";
             this.palavraControl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.palavraControl.Vitoria += new System.EventHandler(this.palavraControl_Vitoria);
-            // 
-            // graficoColunas1
-            // 
-            this.graficoColunas1.Location = new System.Drawing.Point(226, 213);
-            this.graficoColunas1.Name = "graficoColunas1";
-            this.graficoColunas1.Size = new System.Drawing.Size(346, 70);
-            this.graficoColunas1.TabIndex = 14;
-            this.graficoColunas1.TabStop = false;
-            this.graficoColunas1.Total = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Italic);
-            this.label4.Location = new System.Drawing.Point(-1, 425);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(165, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Desenvolvido por Allex Rodrigues";
-            // 
-            // btnCustomizar
-            // 
-            this.btnCustomizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCustomizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomizar.Location = new System.Drawing.Point(314, 289);
-            this.btnCustomizar.Name = "btnCustomizar";
-            this.btnCustomizar.Size = new System.Drawing.Size(82, 23);
-            this.btnCustomizar.TabIndex = 16;
-            this.btnCustomizar.TabStop = false;
-            this.btnCustomizar.Text = "Customizar";
-            this.btnCustomizar.UseMnemonic = false;
-            this.btnCustomizar.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -257,8 +258,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Forca";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.forca1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.graficoColunas1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forca1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -180,5 +180,11 @@ namespace JogoForca
             graficoColunas1.AtualizaSet("Vitórias", _vitorias, Color.Green);
             graficoColunas1.AtualizaSet("Derrotas", _derrotas, Color.Red);
         }
+
+        private void btnCustomizar_Click(object sender, EventArgs e)
+        {
+            FrmCustomizarBoneco cust = new FrmCustomizarBoneco();
+            cust.ShowDialog();
+        }
     }
 }
