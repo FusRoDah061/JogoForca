@@ -58,6 +58,9 @@
     <Compile Include="Controles\PalavraControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controles\ParteBoneco.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="infos.txt">
+      <SubType>Form</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

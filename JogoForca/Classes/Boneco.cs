@@ -2,7 +2,7 @@
 
 namespace JogoForca.Classes
 {
-    class Boneco
+    public class Boneco
     {
         /// <summary>
         /// Partes do corpo do boneco. ao alcançar a PERNA_ESQ, o jogo acaba

@@ -1,0 +1,8 @@
+﻿<p>
+    cabeça: 30 x 30</p>
+<p>
+    torso: 2x70</p>
+<p>
+    braços: 15x50</p>
+<p>
+    pernas: 15x70</p>
