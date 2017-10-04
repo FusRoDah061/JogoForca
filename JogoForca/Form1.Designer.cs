@@ -43,6 +43,7 @@
             this.palavraControl = new JogoForca.Controles.PalavraControl();
             this.graficoColunas1 = new JogoForca.Controles.GraficoColunas();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnCustomizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.forca1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graficoColunas1)).BeginInit();
             this.SuspendLayout();
@@ -108,7 +109,7 @@
             // 
             this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Location = new System.Drawing.Point(314, 289);
+            this.btnSair.Location = new System.Drawing.Point(402, 289);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(82, 23);
             this.btnSair.TabIndex = 8;
@@ -215,12 +216,26 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Desenvolvido por Allex Rodrigues";
             // 
+            // btnCustomizar
+            // 
+            this.btnCustomizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCustomizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomizar.Location = new System.Drawing.Point(314, 289);
+            this.btnCustomizar.Name = "btnCustomizar";
+            this.btnCustomizar.Size = new System.Drawing.Size(82, 23);
+            this.btnCustomizar.TabIndex = 16;
+            this.btnCustomizar.TabStop = false;
+            this.btnCustomizar.Text = "Customizar";
+            this.btnCustomizar.UseMnemonic = false;
+            this.btnCustomizar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 440);
+            this.Controls.Add(this.btnCustomizar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.graficoColunas1);
             this.Controls.Add(this.lblPartida);
@@ -266,6 +281,7 @@
         private System.Windows.Forms.Label lblPartida;
         private Controles.GraficoColunas graficoColunas1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCustomizar;
     }
 }
 
