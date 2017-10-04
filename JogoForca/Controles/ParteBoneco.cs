@@ -13,6 +13,12 @@ namespace JogoForca.Controles
     {
         private PictureBox _areaDesenho;
 
+        private bool _podeDesenhar = false;
+
+        public Color Cor { get; set; }
+
+        public bool Modificado { get; set; } = false;
+
         public int Escala { get; set; }
 
         private Boneco.ParteCorpo _parteCorpo;
@@ -39,6 +45,34 @@ namespace JogoForca.Controles
             PtCorpo = parteCorpo;
             Escala = 4;
             this.Invalidated += _atualizaDesenho;
+            
+        }
+
+        private void _bloqueiaDesenho(object sender, MouseEventArgs e)
+        {
+            _podeDesenhar = false;
+        }
+
+        private void _desenha(object sender, MouseEventArgs e)
+        {
+            if (_podeDesenhar)
+            {
+                Modificado = true;
+
+                Graphics g = _areaDesenho.CreateGraphics();
+                
+                SolidBrush sb = new SolidBrush(Cor);
+
+                try {
+                    g.FillRectangle(sb, e.X - Escala / 2, e.Y - Escala / 2, Escala, Escala);
+                }catch { }
+                
+            }
+        }
+
+        private void _permiteDesenhar(object sender, MouseEventArgs e)
+        {
+            _podeDesenhar = true;
         }
 
         private void _atualizaDesenho(object sender, InvalidateEventArgs e)
@@ -59,6 +93,10 @@ namespace JogoForca.Controles
             _areaDesenho.Location = new Point((this.Width / 2) - (_areaDesenho.Width / 2), (this.Height / 2) - (_areaDesenho.Height / 2));
             _areaDesenho.BackColor = Color.White;
             _areaDesenho.CreateControl();
+
+            _areaDesenho.MouseDown += _permiteDesenhar;
+            _areaDesenho.MouseMove += _desenha;
+            _areaDesenho.MouseUp += _bloqueiaDesenho;
 
             this.BorderStyle = BorderStyle.FixedSingle;
             this.BackColor = Color.Gray;
