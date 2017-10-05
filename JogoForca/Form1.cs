@@ -108,6 +108,7 @@ namespace JogoForca
 
             _acabou = true;
             btnRecomecar.Enabled = true;
+            btnResetarBoneco.Enabled = true;
             MessageBox.Show("Você venceu!", "Fim de jogo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             forca1.EscreveFinalizacao(Forca.Finalizacao.VITORIA);
             _vitorias++;
@@ -120,6 +121,7 @@ namespace JogoForca
 
             _acabou = true;
             btnRecomecar.Enabled = true;
+            btnResetarBoneco.Enabled = true;
             MessageBox.Show("Você perdeu!", "Fim de jogo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             forca1.EscreveFinalizacao(Forca.Finalizacao.DERROTA);
             _derrotas++;
@@ -141,6 +143,7 @@ namespace JogoForca
             lblQtdLetras.Text = palavraControl.QtdLetras.ToString();
             lblPartida.Text = "Partida: " + _rodadaAtual.ToString();
             btnRecomecar.Enabled = false;
+            btnResetarBoneco.Enabled = false;
             this.Focus();
             _acabou = false;
 

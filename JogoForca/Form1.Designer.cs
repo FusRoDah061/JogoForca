@@ -201,6 +201,7 @@
             // btnResetarBoneco
             // 
             this.btnResetarBoneco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetarBoneco.Enabled = false;
             this.btnResetarBoneco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetarBoneco.Location = new System.Drawing.Point(12, 318);
             this.btnResetarBoneco.Name = "btnResetarBoneco";

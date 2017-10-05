@@ -68,7 +68,16 @@ namespace JogoForca.Classes
         private Bitmap _carregaImagem(string arquivo, Size tamanho)
         {
             Bitmap img = new Bitmap(arquivo);
-            Bitmap retorno = new Bitmap(img, tamanho);
+            Bitmap imgRedimensionada = new Bitmap(img, tamanho);
+
+            //Clona a imagem para liberar o arquivo
+            Bitmap retorno = (Bitmap) imgRedimensionada.Clone();
+
+            img.Dispose();
+            imgRedimensionada.Dispose();
+
+            img = null;
+            imgRedimensionada = null;
 
             return retorno;
         }
