@@ -1,5 +1,6 @@
 ﻿using JogoForca.Classes;
 using JogoForca.Controles;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,6 +14,21 @@ namespace JogoForca
         private ParteBoneco _bracoDir;
         private ParteBoneco _pernaDir;
         private ParteBoneco _pernaEsq;
+
+        public List<Bitmap> Partes
+        {
+            get
+            {
+                return new List<Bitmap>(){
+                    _cabeca.Desenhado,
+                    _torso.Desenhado,
+                    _bracoEsq.Desenhado,
+                    _bracoDir.Desenhado,
+                    _pernaDir.Desenhado,
+                    _pernaDir.Desenhado
+                };
+            }
+        }
 
         public FrmCustomizarBoneco()
         {
@@ -66,7 +82,9 @@ namespace JogoForca
 
             tabPernaEsquerda.Controls.Add(_pernaEsq);
             _pernaEsq.Invalidate();
-            
+
+            panelCorSelecionada.BackColor = Color.Black;
+            _atualizaCor();
         }
 
         private void btnPickCor_Click(object sender, System.EventArgs e)
@@ -74,6 +92,11 @@ namespace JogoForca
             colorDialog1.ShowDialog();
             panelCorSelecionada.BackColor = colorDialog1.Color;
 
+            _atualizaCor();
+        }
+
+        private void _atualizaCor()
+        {
             _cabeca.Cor = panelCorSelecionada.BackColor;
             _torso.Cor = panelCorSelecionada.BackColor;
             _pernaDir.Cor = panelCorSelecionada.BackColor;

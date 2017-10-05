@@ -32,10 +32,10 @@
             this.tabCabeca = new System.Windows.Forms.TabPage();
             this.tabTorso = new System.Windows.Forms.TabPage();
             this.tabBracos = new System.Windows.Forms.TabPage();
-            this.tabPernas = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabBracoEsquerdo = new System.Windows.Forms.TabPage();
             this.tabBracoDireito = new System.Windows.Forms.TabPage();
+            this.tabPernas = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPernaEsquerda = new System.Windows.Forms.TabPage();
             this.tabPernaDireita = new System.Windows.Forms.TabPage();
@@ -47,8 +47,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabBracos.SuspendLayout();
-            this.tabPernas.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.tabPernas.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,16 +95,6 @@
             this.tabBracos.Text = "Braços";
             this.tabBracos.UseVisualStyleBackColor = true;
             // 
-            // tabPernas
-            // 
-            this.tabPernas.Controls.Add(this.tabControl3);
-            this.tabPernas.Location = new System.Drawing.Point(4, 22);
-            this.tabPernas.Name = "tabPernas";
-            this.tabPernas.Size = new System.Drawing.Size(316, 352);
-            this.tabPernas.TabIndex = 3;
-            this.tabPernas.Text = "Pernas";
-            this.tabPernas.UseVisualStyleBackColor = true;
-            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabBracoEsquerdo);
@@ -131,10 +121,20 @@
             this.tabBracoDireito.Location = new System.Drawing.Point(4, 22);
             this.tabBracoDireito.Name = "tabBracoDireito";
             this.tabBracoDireito.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBracoDireito.Size = new System.Drawing.Size(484, 326);
+            this.tabBracoDireito.Size = new System.Drawing.Size(308, 326);
             this.tabBracoDireito.TabIndex = 1;
             this.tabBracoDireito.Text = "Direito";
             this.tabBracoDireito.UseVisualStyleBackColor = true;
+            // 
+            // tabPernas
+            // 
+            this.tabPernas.Controls.Add(this.tabControl3);
+            this.tabPernas.Location = new System.Drawing.Point(4, 22);
+            this.tabPernas.Name = "tabPernas";
+            this.tabPernas.Size = new System.Drawing.Size(316, 352);
+            this.tabPernas.TabIndex = 3;
+            this.tabPernas.Text = "Pernas";
+            this.tabPernas.UseVisualStyleBackColor = true;
             // 
             // tabControl3
             // 
@@ -162,7 +162,7 @@
             this.tabPernaDireita.Location = new System.Drawing.Point(4, 22);
             this.tabPernaDireita.Name = "tabPernaDireita";
             this.tabPernaDireita.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPernaDireita.Size = new System.Drawing.Size(484, 326);
+            this.tabPernaDireita.Size = new System.Drawing.Size(308, 326);
             this.tabPernaDireita.TabIndex = 1;
             this.tabPernaDireita.Text = "Direita";
             this.tabPernaDireita.UseVisualStyleBackColor = true;
@@ -170,6 +170,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Location = new System.Drawing.Point(331, 322);
             this.btnSalvar.Name = "btnSalvar";
@@ -214,6 +215,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Location = new System.Drawing.Point(331, 351);
             this.btnCancelar.Name = "btnCancelar";
@@ -227,9 +229,11 @@
             // 
             // FrmCustomizarBoneco
             // 
+            this.AcceptButton = this.btnSalvar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(500, 378);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnPickCor);
@@ -243,8 +247,8 @@
             this.Text = "Customizar boneco";
             this.tabControl1.ResumeLayout(false);
             this.tabBracos.ResumeLayout(false);
-            this.tabPernas.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
+            this.tabPernas.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

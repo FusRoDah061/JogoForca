@@ -21,8 +21,10 @@ namespace JogoForca.Controles
 
         public int Escala { get; set; }
 
-        private Boneco.ParteCorpo _parteCorpo;
+        public Bitmap Desenhado { get; set; }
 
+        private Boneco.ParteCorpo _parteCorpo;
+    
         /// <summary>
         /// Parte do corpo que esse controle irá representar
         /// </summary>
@@ -47,7 +49,7 @@ namespace JogoForca.Controles
             this.Invalidated += _atualizaDesenho;
             Modificado = false;
         }
-
+        
         private void _bloqueiaDesenho(object sender, MouseEventArgs e)
         {
             _podeDesenhar = false;
@@ -58,21 +60,28 @@ namespace JogoForca.Controles
             if (_podeDesenhar)
             {
                 Modificado = true;
-
-                Graphics g = _areaDesenho.CreateGraphics();
-                
+                                
                 SolidBrush sb = new SolidBrush(Cor);
+                Graphics g = Graphics.FromImage(Desenhado);
 
                 try {
                     g.FillRectangle(sb, e.X - Escala / 2, e.Y - Escala / 2, Escala, Escala);
                 }catch { }
-                
+
+                _areaDesenho.Invalidate();
             }
         }
 
         private void _permiteDesenhar(object sender, MouseEventArgs e)
         {
             _podeDesenhar = true;
+
+            if (Desenhado == null)
+            {
+                Desenhado = new Bitmap(_areaDesenho.Width, _areaDesenho.Height);
+            }
+
+            _areaDesenho.BackgroundImage = Desenhado;
         }
 
         private void _atualizaDesenho(object sender, InvalidateEventArgs e)
@@ -97,11 +106,18 @@ namespace JogoForca.Controles
             _areaDesenho.MouseDown += _permiteDesenhar;
             _areaDesenho.MouseMove += _desenha;
             _areaDesenho.MouseUp += _bloqueiaDesenho;
-
+            
             this.BorderStyle = BorderStyle.FixedSingle;
             this.BackColor = Color.Gray;
-
+            
             this.Controls.Add(_areaDesenho);
+
+            try {
+                Desenhado = new Bitmap(_areaDesenho.Width, _areaDesenho.Height);
+            } catch { }
+
+
+            _areaDesenho.BackgroundImage = Desenhado;
         }
 
         private void _atualiza()

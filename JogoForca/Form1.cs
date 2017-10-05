@@ -184,7 +184,11 @@ namespace JogoForca
         private void btnCustomizar_Click(object sender, EventArgs e)
         {
             FrmCustomizarBoneco cust = new FrmCustomizarBoneco();
-            cust.ShowDialog();
+
+            if(cust.ShowDialog() == DialogResult.OK){
+                List<Bitmap> partes = cust.Partes;
+            }
+            
         }
     }
 }
