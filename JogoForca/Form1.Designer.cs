@@ -41,6 +41,7 @@
             this.lblPartida = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCustomizar = new System.Windows.Forms.Button();
+            this.btnResetarBoneco = new System.Windows.Forms.Button();
             this.graficoColunas1 = new JogoForca.Controles.GraficoColunas();
             this.forca1 = new JogoForca.Controles.Forca();
             this.palavraControl = new JogoForca.Controles.PalavraControl();
@@ -109,7 +110,7 @@
             // 
             this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Location = new System.Drawing.Point(402, 289);
+            this.btnSair.Location = new System.Drawing.Point(314, 289);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(82, 23);
             this.btnSair.TabIndex = 8;
@@ -187,15 +188,29 @@
             // 
             this.btnCustomizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCustomizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomizar.Location = new System.Drawing.Point(314, 289);
+            this.btnCustomizar.Location = new System.Drawing.Point(12, 347);
             this.btnCustomizar.Name = "btnCustomizar";
-            this.btnCustomizar.Size = new System.Drawing.Size(82, 23);
+            this.btnCustomizar.Size = new System.Drawing.Size(205, 23);
             this.btnCustomizar.TabIndex = 16;
             this.btnCustomizar.TabStop = false;
-            this.btnCustomizar.Text = "Customizar";
+            this.btnCustomizar.Text = "Customizar boneco";
             this.btnCustomizar.UseMnemonic = false;
             this.btnCustomizar.UseVisualStyleBackColor = true;
             this.btnCustomizar.Click += new System.EventHandler(this.btnCustomizar_Click);
+            // 
+            // btnResetarBoneco
+            // 
+            this.btnResetarBoneco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetarBoneco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetarBoneco.Location = new System.Drawing.Point(12, 318);
+            this.btnResetarBoneco.Name = "btnResetarBoneco";
+            this.btnResetarBoneco.Size = new System.Drawing.Size(205, 23);
+            this.btnResetarBoneco.TabIndex = 17;
+            this.btnResetarBoneco.TabStop = false;
+            this.btnResetarBoneco.Text = "Resetar boneco";
+            this.btnResetarBoneco.UseMnemonic = false;
+            this.btnResetarBoneco.UseVisualStyleBackColor = true;
+            this.btnResetarBoneco.Click += new System.EventHandler(this.btnResetarBoneco_Click);
             // 
             // graficoColunas1
             // 
@@ -221,7 +236,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.palavraControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.palavraControl.Location = new System.Drawing.Point(12, 361);
+            this.palavraControl.Location = new System.Drawing.Point(12, 379);
             this.palavraControl.Name = "palavraControl";
             this.palavraControl.QtdLetras = 0;
             this.palavraControl.Size = new System.Drawing.Size(560, 39);
@@ -236,6 +251,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 440);
+            this.Controls.Add(this.btnResetarBoneco);
             this.Controls.Add(this.btnCustomizar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.graficoColunas1);
@@ -283,6 +299,7 @@
         private Controles.GraficoColunas graficoColunas1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCustomizar;
+        private System.Windows.Forms.Button btnResetarBoneco;
     }
 }
 

@@ -3,6 +3,7 @@ using JogoForca.Controles;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace JogoForca
@@ -189,9 +190,42 @@ namespace JogoForca
                 List<Bitmap> partes = cust.Partes;
             }
 
+            //Remove o foco do botão
             this.Focus();
             btnCustomizar.Enabled = false;
             btnCustomizar.Enabled = true;
+        }
+
+        private void btnResetarBoneco_Click(object sender, EventArgs e)
+        {
+            try {
+                File.Delete("CABECA.png");
+            } catch { }
+
+            try {
+                File.Delete("CORPO.png");
+            } catch { }
+
+            try {
+                File.Delete("BRACO_ESQ.png");
+            } catch { }
+
+            try {
+                File.Delete("BRACO_DIR.png");
+            } catch { }
+
+            try {
+                File.Delete("PERNA_ESQ.png");
+            } catch { }
+
+            try {
+                File.Delete("PERNA_DIR.png");
+            } catch { }
+
+            //Remove o foco do botão
+            this.Focus();
+            btnResetarBoneco.Enabled = false;
+            btnResetarBoneco.Enabled = true;
         }
     }
 }

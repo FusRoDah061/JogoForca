@@ -159,12 +159,10 @@ namespace JogoForca
         {
             for (byte i = 0; i < _partes.Length; i++)
             {
-                if (_partes[i].Desenhado != null)
-                {
-                    _partes[i].TamanhoPincel = trackTamPincel.Value;
-                }
+                _partes[i].TamanhoPincel = trackTamPincel.Value;
             }
         }
+
         
     }
 }
