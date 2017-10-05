@@ -1,4 +1,6 @@
 ﻿using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace JogoForca.Classes
 {
@@ -7,7 +9,7 @@ namespace JogoForca.Classes
         /// <summary>
         /// Partes do corpo do boneco. ao alcançar a PERNA_ESQ, o jogo acaba
         /// </summary>
-        public enum ParteCorpo { NENHUM, CABECA, CORPO, BRACO_DIR, BRACO_ESQ, PERNA_DIR, PERNA_ESQ }
+        public enum ParteCorpo { CABECA, CORPO, BRACO_DIR, BRACO_ESQ, PERNA_DIR, PERNA_ESQ, NENHUM }
         public enum Braco { ESQUERDO, DIREITO }
         public enum Perna { ESQUERDA, DIREITA }
 
@@ -63,6 +65,14 @@ namespace JogoForca.Classes
             }
         }
 
+        private Bitmap _carregaImagem(string arquivo, Size tamanho)
+        {
+            Bitmap img = new Bitmap(arquivo);
+            Bitmap retorno = new Bitmap(img, tamanho);
+
+            return retorno;
+        }
+
         /// <summary>
         /// Desenha a cabeça do boneco
         /// </summary>
@@ -70,7 +80,17 @@ namespace JogoForca.Classes
         private void _desenhaCabeca(Graphics gp)
         {
             Rectangle cabeca = new Rectangle(new Point(105, 70), new Size(30, 30));
-            gp.FillEllipse(new SolidBrush(Color.NavajoWhite), cabeca);
+
+            if (File.Exists("CABECA.png"))
+            {
+                Bitmap img = _carregaImagem("CABECA.png", new Size(30, 30));
+                gp.DrawImage(img, new Point(105, 70));
+            }
+            else
+            {
+                gp.FillEllipse(new SolidBrush(Color.NavajoWhite), cabeca);
+            }
+            
         }
 
         /// <summary>
@@ -79,7 +99,16 @@ namespace JogoForca.Classes
         /// <param name="gp">Objeto dos gráficos do elemento que receberá o boneco</param>
         private void _desenhaCorpo(Graphics gp)
         {
-            gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(120, 100), new Point(120, 170));
+            if (File.Exists("CORPO.png"))
+            {
+                Bitmap img = _carregaImagem("CORPO.png", new Size(21, 70));
+                gp.DrawImage(img, new Point(110, 100));
+            }
+            else
+            {
+                gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(120, 100), new Point(120, 170));
+            }
+            
         }
 
         /// <summary>
@@ -92,11 +121,27 @@ namespace JogoForca.Classes
             switch (braco)
             {
                 case Braco.ESQUERDO:
-                    gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(105, 160), new Point(120, 110));
+                    if (File.Exists("BRACO_ESQ.png"))
+                    {
+                        Bitmap img = _carregaImagem("BRACO_ESQ.png", new Size(15, 50));
+                        gp.DrawImage(img, new Point(100, 110));
+                    }
+                    else
+                    {
+                        gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(105, 160), new Point(120, 110));
+                    }
                     break;
 
                 case Braco.DIREITO:
-                    gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(135, 160), new Point(120, 110));
+                    if (File.Exists("BRACO_DIR.png"))
+                    {
+                        Bitmap img = _carregaImagem("BRACO_DIR.png", new Size(15, 50));
+                        gp.DrawImage(img, new Point(125, 110));
+                    }
+                    else
+                    {
+                        gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(135, 160), new Point(120, 110));
+                    }
                     break;
             }
             
@@ -112,11 +157,29 @@ namespace JogoForca.Classes
             switch (perna)
             {
                 case Perna.ESQUERDA:
-                    gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(105, 240), new Point(120, 170));
+                    if (File.Exists("PERNA_ESQ.png"))
+                    {
+                        Bitmap img = _carregaImagem("PERNA_ESQ.png", new Size(21, 70));
+                        gp.DrawImage(img, new Point(100, 170));
+                    }
+                    else
+                    {
+                        gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(105, 240), new Point(120, 170));
+                    }
+                    
                     break;
 
                 case Perna.DIREITA:
-                    gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(135, 240), new Point(120, 170));
+                    if (File.Exists("PERNA_DIR.png"))
+                    {
+                        Bitmap img = _carregaImagem("PERNA_DIR.png", new Size(21, 70));
+                        gp.DrawImage(img, new Point(125, 170));
+                    }
+                    else
+                    {
+                        gp.DrawLine(new Pen(Color.NavajoWhite, 2), new Point(135, 240), new Point(120, 170));
+                    }
+                    
                     break;
             }
         }

@@ -52,13 +52,13 @@ namespace JogoForca
                 if (!contem && !_acabou && !_letrasIncorretas.Contains(letra))
                 {
                     //Verifica se a quantidade de erros é menor do que a quantidade máxima de erros, que corresponde à última parte do boneco que será desenhada
-                    if (_erros < (int)Boneco.ParteCorpo.PERNA_ESQ)
+                    if ((_erros - 1) < (int)Boneco.ParteCorpo.PERNA_ESQ)
                     {
                         _erros++;
                         //Adiciona a letra digitada às letras incorretas
                         _letrasIncorretas.Add(letra);
                         //Atualiza o boneco para refletir o erro cometido
-                        forca1.AtualizaBoneco((Boneco.ParteCorpo)_erros);
+                        forca1.AtualizaBoneco((Boneco.ParteCorpo)(_erros - 1));
                         //Atualiza a lista de letras incorretas
                         _atualizaLetrasIncorretas();
                     }
@@ -188,7 +188,10 @@ namespace JogoForca
             if(cust.ShowDialog() == DialogResult.OK){
                 List<Bitmap> partes = cust.Partes;
             }
-            
+
+            this.Focus();
+            btnCustomizar.Enabled = false;
+            btnCustomizar.Enabled = true;
         }
     }
 }

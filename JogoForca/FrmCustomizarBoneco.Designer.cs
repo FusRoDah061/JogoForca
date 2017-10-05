@@ -45,11 +45,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnPickCor = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.trackTamPincel = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabBracos.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPernas.SuspendLayout();
             this.tabControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackTamPincel)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -180,6 +183,7 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseMnemonic = false;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // panelCorSelecionada
             // 
@@ -227,6 +231,26 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // trackTamPincel
+            // 
+            this.trackTamPincel.LargeChange = 1;
+            this.trackTamPincel.Location = new System.Drawing.Point(331, 115);
+            this.trackTamPincel.Minimum = 1;
+            this.trackTamPincel.Name = "trackTamPincel";
+            this.trackTamPincel.Size = new System.Drawing.Size(157, 45);
+            this.trackTamPincel.TabIndex = 22;
+            this.trackTamPincel.Value = 4;
+            this.trackTamPincel.Scroll += new System.EventHandler(this.trackTamPincel_Scroll);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(330, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Tam. pincel";
+            // 
             // FrmCustomizarBoneco
             // 
             this.AcceptButton = this.btnSalvar;
@@ -235,6 +259,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(500, 378);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.trackTamPincel);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnPickCor);
             this.Controls.Add(this.label1);
@@ -250,6 +276,7 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPernas.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackTamPincel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +301,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPickCor;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TrackBar trackTamPincel;
+        private System.Windows.Forms.Label label2;
     }
 }

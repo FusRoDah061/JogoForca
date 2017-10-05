@@ -1,4 +1,4 @@
 ﻿cabeça: 30 x 30
-torso: 2x70
+torso: 21x70
 braços: 15x50
 pernas: 15x70

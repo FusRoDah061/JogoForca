@@ -21,6 +21,8 @@ namespace JogoForca.Controles
 
         public int Escala { get; set; }
 
+        public int TamanhoPincel { get; set; }
+
         public Bitmap Desenhado { get; set; }
 
         private Boneco.ParteCorpo _parteCorpo;
@@ -46,6 +48,7 @@ namespace JogoForca.Controles
         {
             PtCorpo = parteCorpo;
             Escala = 4;
+            TamanhoPincel = 4;
             this.Invalidated += _atualizaDesenho;
             Modificado = false;
         }
@@ -64,8 +67,10 @@ namespace JogoForca.Controles
                 SolidBrush sb = new SolidBrush(Cor);
                 Graphics g = Graphics.FromImage(Desenhado);
 
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
                 try {
-                    g.FillRectangle(sb, e.X - Escala / 2, e.Y - Escala / 2, Escala, Escala);
+                    g.FillRectangle(sb, e.X - TamanhoPincel / 2, e.Y - TamanhoPincel / 2, TamanhoPincel, TamanhoPincel);
                 }catch { }
 
                 _areaDesenho.Invalidate();
@@ -94,6 +99,8 @@ namespace JogoForca.Controles
             if(_areaDesenho != null)
             {
                 this.Controls.Remove(_areaDesenho);
+                _areaDesenho.Dispose();
+                _areaDesenho = null;
             }
 
             _areaDesenho = new PictureBox();
@@ -111,13 +118,6 @@ namespace JogoForca.Controles
             this.BackColor = Color.Gray;
             
             this.Controls.Add(_areaDesenho);
-
-            try {
-                Desenhado = new Bitmap(_areaDesenho.Width, _areaDesenho.Height);
-            } catch { }
-
-
-            _areaDesenho.BackgroundImage = Desenhado;
         }
 
         private void _atualiza()
@@ -131,7 +131,7 @@ namespace JogoForca.Controles
                     break;
 
                 case Boneco.ParteCorpo.CORPO:
-                    area = new Size(2 * Escala, 70 * Escala);
+                    area = new Size(21 * Escala, 70 * Escala);
                     break;
 
                 case Boneco.ParteCorpo.BRACO_DIR:

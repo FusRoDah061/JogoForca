@@ -8,24 +8,20 @@ namespace JogoForca
 {
     public partial class FrmCustomizarBoneco : Form
     {
-        private ParteBoneco _cabeca;
-        private ParteBoneco _torso;
-        private ParteBoneco _bracoEsq;
-        private ParteBoneco _bracoDir;
-        private ParteBoneco _pernaDir;
-        private ParteBoneco _pernaEsq;
+
+        private ParteBoneco[] _partes = new ParteBoneco[6];
 
         public List<Bitmap> Partes
         {
             get
             {
                 return new List<Bitmap>(){
-                    _cabeca.Desenhado,
-                    _torso.Desenhado,
-                    _bracoEsq.Desenhado,
-                    _bracoDir.Desenhado,
-                    _pernaDir.Desenhado,
-                    _pernaDir.Desenhado
+                    _partes[(int) Boneco.ParteCorpo.CABECA].Desenhado,
+                    _partes[(int) Boneco.ParteCorpo.CORPO].Desenhado,
+                    _partes[(int) Boneco.ParteCorpo.BRACO_ESQ].Desenhado,
+                    _partes[(int) Boneco.ParteCorpo.BRACO_DIR].Desenhado,
+                    _partes[(int) Boneco.ParteCorpo.PERNA_DIR].Desenhado,
+                    _partes[(int) Boneco.ParteCorpo.PERNA_ESQ].Desenhado
                 };
             }
         }
@@ -33,58 +29,60 @@ namespace JogoForca
         public FrmCustomizarBoneco()
         {
             InitializeComponent();
+
+            _partes[(int) Boneco.ParteCorpo.CABECA] = new ParteBoneco(Boneco.ParteCorpo.CABECA);
+            _partes[(int) Boneco.ParteCorpo.CABECA].Location = new Point(5, 5);
+            _partes[(int) Boneco.ParteCorpo.CABECA].Size = new Size(tabCabeca.Width, tabCabeca.Height);
+            _partes[(int) Boneco.ParteCorpo.CABECA].CreateControl();
+
+            _partes[(int)Boneco.ParteCorpo.CORPO] = new ParteBoneco(Boneco.ParteCorpo.CORPO);
+            _partes[(int)Boneco.ParteCorpo.CORPO].Location = new Point(5, 5);
+            _partes[(int)Boneco.ParteCorpo.CORPO].Size = new Size(tabTorso.Width, tabTorso.Height);
+            _partes[(int)Boneco.ParteCorpo.CORPO].CreateControl();
+
+            _partes[(int)Boneco.ParteCorpo.BRACO_ESQ] = new ParteBoneco(Boneco.ParteCorpo.BRACO_ESQ);
+            _partes[(int)Boneco.ParteCorpo.BRACO_ESQ].Location = new Point(5, 5);
+            _partes[(int)Boneco.ParteCorpo.BRACO_ESQ].Size = new Size(tabBracoEsquerdo.Width, tabBracoEsquerdo.Height);
+            _partes[(int)Boneco.ParteCorpo.BRACO_ESQ].CreateControl();
+
+            _partes[(int)Boneco.ParteCorpo.BRACO_DIR] = new ParteBoneco(Boneco.ParteCorpo.BRACO_DIR);
+            _partes[(int)Boneco.ParteCorpo.BRACO_DIR].Location = new Point(5, 5);
+            _partes[(int)Boneco.ParteCorpo.BRACO_DIR].Size = new Size(tabBracoDireito.Width, tabBracoDireito.Height);
+            _partes[(int)Boneco.ParteCorpo.BRACO_DIR].CreateControl();
+
+            _partes[(int)Boneco.ParteCorpo.PERNA_DIR] = new ParteBoneco(Boneco.ParteCorpo.PERNA_DIR);
+            _partes[(int)Boneco.ParteCorpo.PERNA_DIR].Location = new Point(5, 5);
+            _partes[(int)Boneco.ParteCorpo.PERNA_DIR].Size = new Size(tabPernaDireita.Width, tabPernaDireita.Height);
+            _partes[(int)Boneco.ParteCorpo.PERNA_DIR].CreateControl();
+
+            _partes[(int)Boneco.ParteCorpo.PERNA_ESQ] = new ParteBoneco(Boneco.ParteCorpo.PERNA_ESQ);
+            _partes[(int)Boneco.ParteCorpo.PERNA_ESQ].Location = new Point(5, 5);
+            _partes[(int)Boneco.ParteCorpo.PERNA_ESQ].Size = new Size(tabPernaEsquerda.Width, tabPernaEsquerda.Height);
+            _partes[(int)Boneco.ParteCorpo.PERNA_ESQ].CreateControl();
+
+            tabCabeca.Controls.Add(_partes[(int)Boneco.ParteCorpo.CABECA]);
+            _partes[(int)Boneco.ParteCorpo.CABECA].Invalidate();
+
+            tabTorso.Controls.Add(_partes[(int)Boneco.ParteCorpo.CORPO]);
+            _partes[(int)Boneco.ParteCorpo.CORPO].Invalidate();
+
+            tabBracoEsquerdo.Controls.Add(_partes[(int)Boneco.ParteCorpo.BRACO_ESQ]);
+            _partes[(int)Boneco.ParteCorpo.BRACO_ESQ].Invalidate();
+
+            tabBracoDireito.Controls.Add(_partes[(int)Boneco.ParteCorpo.BRACO_DIR]);
+            _partes[(int)Boneco.ParteCorpo.BRACO_DIR].Invalidate();
+
+            tabPernaDireita.Controls.Add(_partes[(int)Boneco.ParteCorpo.PERNA_DIR]);
+            _partes[(int)Boneco.ParteCorpo.PERNA_DIR].Invalidate();
+
+            tabPernaEsquerda.Controls.Add(_partes[(int)Boneco.ParteCorpo.PERNA_ESQ]);
+            _partes[(int)Boneco.ParteCorpo.PERNA_ESQ].Invalidate();
             
-            _cabeca = new ParteBoneco(Boneco.ParteCorpo.CABECA);
-            _cabeca.Location = new Point(5, 5);
-            _cabeca.Size = new Size(tabCabeca.Width, tabCabeca.Height);
-            _cabeca.CreateControl();
-
-            _torso = new ParteBoneco(Boneco.ParteCorpo.CORPO);
-            _torso.Location = new Point(5, 5);
-            _torso.Size = new Size(tabTorso.Width, tabTorso.Height);
-            _torso.CreateControl();
-            
-            _bracoEsq = new ParteBoneco(Boneco.ParteCorpo.BRACO_ESQ);
-            _bracoEsq.Location = new Point(5, 5);
-            _bracoEsq.Size = new Size(tabBracoEsquerdo.Width, tabBracoEsquerdo.Height);
-            _bracoEsq.CreateControl();
-            
-            _bracoDir = new ParteBoneco(Boneco.ParteCorpo.BRACO_DIR);
-            _bracoDir.Location = new Point(5, 5);
-            _bracoDir.Size = new Size(tabBracoDireito.Width, tabBracoDireito.Height);
-            _bracoDir.CreateControl();
-            
-            _pernaDir = new ParteBoneco(Boneco.ParteCorpo.PERNA_DIR);
-            _pernaDir.Location = new Point(5, 5);
-            _pernaDir.Size = new Size(tabPernaDireita.Width, tabPernaDireita.Height);
-            _pernaDir.CreateControl();
-
-            _pernaEsq = new ParteBoneco(Boneco.ParteCorpo.PERNA_ESQ);
-            _pernaEsq.Location = new Point(5, 5);
-            _pernaEsq.Size = new Size(tabPernaEsquerda.Width, tabPernaEsquerda.Height);
-            _pernaEsq.CreateControl();
-            
-
-            tabCabeca.Controls.Add(_cabeca);
-            _cabeca.Invalidate();
-
-            tabTorso.Controls.Add(_torso);
-            _torso.Invalidate();
-
-            tabBracoEsquerdo.Controls.Add(_bracoEsq);
-            _bracoEsq.Invalidate();
-
-            tabBracoDireito.Controls.Add(_bracoDir);
-            _bracoDir.Invalidate();
-
-            tabPernaDireita.Controls.Add(_pernaDir);
-            _pernaDir.Invalidate();
-
-            tabPernaEsquerda.Controls.Add(_pernaEsq);
-            _pernaEsq.Invalidate();
-
             panelCorSelecionada.BackColor = Color.Black;
+
             _atualizaCor();
+
+            _atualizaTamanhoPincel();
         }
 
         private void btnPickCor_Click(object sender, System.EventArgs e)
@@ -97,17 +95,75 @@ namespace JogoForca
 
         private void _atualizaCor()
         {
-            _cabeca.Cor = panelCorSelecionada.BackColor;
-            _torso.Cor = panelCorSelecionada.BackColor;
-            _pernaDir.Cor = panelCorSelecionada.BackColor;
-            _pernaEsq.Cor = panelCorSelecionada.BackColor;
-            _bracoDir.Cor = panelCorSelecionada.BackColor;
-            _bracoEsq.Cor = panelCorSelecionada.BackColor;
+            for (byte i = 0; i < _partes.Length; i++)
+            {
+                _partes[i].Cor = panelCorSelecionada.BackColor;
+            }
         }
 
         private void btnCancelar_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void _salvarPartesCorpo()
+        {
+            for (byte i = 0; i < _partes.Length; i++)
+            {
+                string imgNome = _obtemNomeArquivo(i);
+
+                if (_partes[i].Desenhado != null)
+                {
+                    _partes[i].Desenhado.Save(imgNome + ".png");
+                }
+            }
+        }
+
+        private string _obtemNomeArquivo(byte i)
+        {
+            switch (i)
+            {
+                case (int)Boneco.ParteCorpo.CABECA:
+                    return "CABECA";
+
+                case (int)Boneco.ParteCorpo.CORPO:
+                    return "CORPO";
+
+                case (int)Boneco.ParteCorpo.BRACO_DIR:
+                    return "BRACO_DIR";
+
+                case (int)Boneco.ParteCorpo.BRACO_ESQ:
+                    return "BRACO_ESQ";
+
+                case (int)Boneco.ParteCorpo.PERNA_DIR:
+                    return "PERNA_DIR";
+
+                case (int)Boneco.ParteCorpo.PERNA_ESQ:
+                    return "PERNA_ESQ";
+            }
+
+            return null;
+        }
+
+        private void btnSalvar_Click(object sender, System.EventArgs e)
+        {
+            _salvarPartesCorpo();
+        }
+
+        private void trackTamPincel_Scroll(object sender, System.EventArgs e)
+        {
+            _atualizaTamanhoPincel();
+        }
+
+        private void _atualizaTamanhoPincel()
+        {
+            for (byte i = 0; i < _partes.Length; i++)
+            {
+                if (_partes[i].Desenhado != null)
+                {
+                    _partes[i].TamanhoPincel = trackTamPincel.Value;
+                }
+            }
         }
         
     }
