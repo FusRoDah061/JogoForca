@@ -230,5 +230,10 @@ namespace JogoForca
             btnResetarBoneco.Enabled = false;
             btnResetarBoneco.Enabled = true;
         }
+
+        private void label4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/FusRoDah061/JogoForca");
+        }
     }
 }

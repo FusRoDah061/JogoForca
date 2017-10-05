@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.lblLetrasIncorretas = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,12 +40,13 @@
             this.lblVitorias = new System.Windows.Forms.Label();
             this.lblDerrotas = new System.Windows.Forms.Label();
             this.lblPartida = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.LinkLabel();
             this.btnCustomizar = new System.Windows.Forms.Button();
             this.btnResetarBoneco = new System.Windows.Forms.Button();
             this.graficoColunas1 = new JogoForca.Controles.GraficoColunas();
             this.forca1 = new JogoForca.Controles.Forca();
             this.palavraControl = new JogoForca.Controles.PalavraControl();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.graficoColunas1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.forca1)).BeginInit();
             this.SuspendLayout();
@@ -178,11 +180,15 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Italic);
+            this.label4.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.label4.Location = new System.Drawing.Point(-1, 425);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(165, 13);
             this.label4.TabIndex = 15;
+            this.label4.TabStop = true;
             this.label4.Text = "Desenvolvido por Allex Rodrigues";
+            this.toolTip1.SetToolTip(this.label4, "https://github.com/FusRoDah061/JogoForca");
+            this.label4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.label4_LinkClicked);
             // 
             // btnCustomizar
             // 
@@ -298,9 +304,10 @@
         private System.Windows.Forms.Label lblDerrotas;
         private System.Windows.Forms.Label lblPartida;
         private Controles.GraficoColunas graficoColunas1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel label4;
         private System.Windows.Forms.Button btnCustomizar;
         private System.Windows.Forms.Button btnResetarBoneco;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
