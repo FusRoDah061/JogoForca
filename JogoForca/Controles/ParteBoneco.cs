@@ -17,7 +17,7 @@ namespace JogoForca.Controles
 
         public Color Cor { get; set; }
 
-        public bool Modificado { get; set; } = false;
+        public bool Modificado { get; set; }
 
         public int Escala { get; set; }
 
@@ -45,7 +45,7 @@ namespace JogoForca.Controles
             PtCorpo = parteCorpo;
             Escala = 4;
             this.Invalidated += _atualizaDesenho;
-            
+            Modificado = false;
         }
 
         private void _bloqueiaDesenho(object sender, MouseEventArgs e)
