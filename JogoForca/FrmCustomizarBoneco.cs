@@ -8,7 +8,9 @@ namespace JogoForca
 {
     public partial class FrmCustomizarBoneco : Form
     {
-
+        /// <summary>
+        /// Partes do corpo do boneco
+        /// </summary>
         private ParteBoneco[] _partes = new ParteBoneco[6];
 
         public List<Bitmap> Partes
@@ -29,7 +31,8 @@ namespace JogoForca
         public FrmCustomizarBoneco()
         {
             InitializeComponent();
-
+            
+            //Inicializa todas as partes do corpo
             _partes[(int) Boneco.ParteCorpo.CABECA] = new ParteBoneco(Boneco.ParteCorpo.CABECA);
             _partes[(int) Boneco.ParteCorpo.CABECA].Location = new Point(5, 5);
             _partes[(int) Boneco.ParteCorpo.CABECA].Size = new Size(tabCabeca.Width, tabCabeca.Height);
@@ -60,6 +63,7 @@ namespace JogoForca
             _partes[(int)Boneco.ParteCorpo.PERNA_ESQ].Size = new Size(tabPernaEsquerda.Width, tabPernaEsquerda.Height);
             _partes[(int)Boneco.ParteCorpo.PERNA_ESQ].CreateControl();
 
+            //Adiciona as partes ás respectivas guias do tabcontrol
             tabCabeca.Controls.Add(_partes[(int)Boneco.ParteCorpo.CABECA]);
             _partes[(int)Boneco.ParteCorpo.CABECA].Invalidate();
 
@@ -87,18 +91,20 @@ namespace JogoForca
 
         private void btnPickCor_Click(object sender, System.EventArgs e)
         {
+            //Exibe a caixa de seleção de cor
             colorDialog1.ShowDialog();
+            //salva a cor em um panel para usá-la depois
             panelCorSelecionada.BackColor = colorDialog1.Color;
 
             _atualizaCor();
         }
 
+        /// <summary>
+        /// Atualiza a cor do pincel em todas as partes do corpo que foram criadas
+        /// </summary>
         private void _atualizaCor()
         {
-            for (byte i = 0; i < _partes.Length; i++)
-            {
-                _partes[i].Cor = panelCorSelecionada.BackColor;
-            }
+            ParteBoneco.Cor = panelCorSelecionada.BackColor;
         }
 
         private void btnCancelar_Click(object sender, System.EventArgs e)
@@ -106,19 +112,22 @@ namespace JogoForca
             this.Close();
         }
 
+        /// <summary>
+        /// Salva todas as partes do corpo para o disco. Essa imagens serão carregadas na hora de desenhar o boneco
+        /// </summary>
         private void _salvarPartesCorpo()
         {
             for (byte i = 0; i < _partes.Length; i++)
-            {
-                string imgNome = _obtemNomeArquivo(i);
-
-                if (_partes[i].Desenhado != null)
-                {
-                    _partes[i].Desenhado.Save(imgNome + ".png");
-                }
+            {                
+                _partes[i].SalvaImagem(_obtemNomeArquivo(i) + ".png");
             }
         }
 
+        /// <summary>
+        /// Obtém o nome do arquivo de acordo com a parte do corpo
+        /// </summary>
+        /// <param name="i">Parte do corpo(Boneco.ParteCorpo)</param>
+        /// <returns>string com o nome do arquivo</returns>
         private string _obtemNomeArquivo(byte i)
         {
             switch (i)
@@ -155,12 +164,12 @@ namespace JogoForca
             _atualizaTamanhoPincel();
         }
 
+        /// <summary>
+        /// Atualiza o tamanho do pincel do usuário em todas as partes do corpo
+        /// </summary>
         private void _atualizaTamanhoPincel()
         {
-            for (byte i = 0; i < _partes.Length; i++)
-            {
-                _partes[i].TamanhoPincel = trackTamPincel.Value;
-            }
+            ParteBoneco.TamanhoPincel = trackTamPincel.Value;
         }
 
         

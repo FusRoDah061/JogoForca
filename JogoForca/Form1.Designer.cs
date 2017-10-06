@@ -43,10 +43,10 @@
             this.label4 = new System.Windows.Forms.LinkLabel();
             this.btnCustomizar = new System.Windows.Forms.Button();
             this.btnResetarBoneco = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.graficoColunas1 = new JogoForca.Controles.GraficoColunas();
             this.forca1 = new JogoForca.Controles.Forca();
             this.palavraControl = new JogoForca.Controles.PalavraControl();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.graficoColunas1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.forca1)).BeginInit();
             this.SuspendLayout();
@@ -276,10 +276,12 @@
             this.Controls.Add(this.forca1);
             this.Controls.Add(this.palavraControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Forca";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.graficoColunas1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.forca1)).EndInit();

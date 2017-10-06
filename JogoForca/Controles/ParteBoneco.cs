@@ -11,20 +11,40 @@ namespace JogoForca.Controles
 {
     public class ParteBoneco : Panel
     {
+
+        /// <summary>
+        /// Área onde o usuário pode desenhar. Será a parte branca dentro do controle
+        /// </summary>
         private PictureBox _areaDesenho;
 
+        /// <summary>
+        /// Controla quando o usuário etá habiltado a desenhar. True no MouseDown e false no MouseUp
+        /// </summary>
         private bool _podeDesenhar = false;
 
-        public Color Cor { get; set; }
-
-        public bool Modificado { get; set; }
-
+        /// <summary>
+        /// Cor selecionada pelo usuário. O formulário de desenho que altera esse valor
+        /// </summary>
+        public static Color Cor { get; set; }
+        
+        /// <summary>
+        /// Escala do desenho. Similar a um zoom. As dimensões das parte do corpo serão multiplicadas por esse valor
+        /// </summary>
         public int Escala { get; set; }
 
-        public int TamanhoPincel { get; set; }
+        /// <summary>
+        /// Tamanho do "pincel" que o usuário usa para desenhar
+        /// </summary>
+        public static int TamanhoPincel { get; set; }
 
+        /// <summary>
+        /// Guarda o conteúdo que foi desenhado em _areaDesenho
+        /// </summary>
         public Bitmap Desenhado { get; set; }
 
+        /// <summary>
+        /// Parte do corpo que esse controle vai representar
+        /// </summary>
         private Boneco.ParteCorpo _parteCorpo;
     
         /// <summary>
@@ -50,29 +70,38 @@ namespace JogoForca.Controles
             Escala = 4;
             TamanhoPincel = 4;
             this.Invalidated += _atualizaDesenho;
-            Modificado = false;
         }
         
+        /// <summary>
+        /// Event handler do MouseUp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _bloqueiaDesenho(object sender, MouseEventArgs e)
         {
             _podeDesenhar = false;
         }
 
+        /// <summary>
+        /// Event handler do MouseMove
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _desenha(object sender, MouseEventArgs e)
         {
             if (_podeDesenhar)
             {
-                Modificado = true;
                                 
                 SolidBrush sb = new SolidBrush(Cor);
                 Graphics g = Graphics.FromImage(Desenhado);
 
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
+                //Desenha um quadrado na posição do ponteiro do mouse
                 try {
                     g.FillRectangle(sb, e.X - TamanhoPincel / 2, e.Y - TamanhoPincel / 2, TamanhoPincel, TamanhoPincel);
                 }catch { }
 
+                //Atualiza a picturebox do desenho
                 _areaDesenho.Invalidate();
             }
         }
@@ -83,12 +112,20 @@ namespace JogoForca.Controles
 
             if (Desenhado == null)
             {
+                //salva o desenho na imagem
                 Desenhado = new Bitmap(_areaDesenho.Width, _areaDesenho.Height);
             }
 
+            //Coloca a imagem na picturebox tanto para persistir o desenho ao trocar de abas,
+            //quanto para salvar essa imagem para o disco
             _areaDesenho.BackgroundImage = Desenhado;
         }
 
+        /// <summary>
+        /// Event handler do Invalidate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _atualizaDesenho(object sender, InvalidateEventArgs e)
         {
             _atualiza();
@@ -96,6 +133,7 @@ namespace JogoForca.Controles
 
         private void _iniciaAreaDesenho(Size dimensoes)
         {
+            //Destroi a picturebox caso ela já exista
             if(_areaDesenho != null)
             {
                 this.Controls.Remove(_areaDesenho);
@@ -110,8 +148,12 @@ namespace JogoForca.Controles
             _areaDesenho.BackColor = Color.White;
             _areaDesenho.CreateControl();
 
+            //Atribui os handlers que controlarão o desenho.
+            //No mousedown o desenho é "habilitado"
             _areaDesenho.MouseDown += _permiteDesenhar;
+            //no mousemove, já com o desenho habilitado, será feito de fato o desenho
             _areaDesenho.MouseMove += _desenha;
+            //Ao soltar o mouse o desenho é "desabilitado"
             _areaDesenho.MouseUp += _bloqueiaDesenho;
             
             this.BorderStyle = BorderStyle.FixedSingle;
@@ -120,8 +162,12 @@ namespace JogoForca.Controles
             this.Controls.Add(_areaDesenho);
         }
 
+        /// <summary>
+        /// Atualiza o controle todo
+        /// </summary>
         private void _atualiza()
         {
+            //Area que será usada pelo usuário para desenhar. varia de acordo com a parte do corpo
             Size area = new Size(this.Width, this.Height);
 
             switch (_parteCorpo)
@@ -145,9 +191,21 @@ namespace JogoForca.Controles
                     break;
             }
 
+            //Cria a picturebox
             _iniciaAreaDesenho(area);
 
         }
         
+        /// <summary>
+        /// Salva a imagem desenhada para o disco
+        /// </summary>
+        /// <param name="path">Diretório da imagem</param>
+        public void SalvaImagem(string path)
+        {
+            if (Desenhado != null)
+            {
+                Desenhado.Save(path);
+            }
+        }
     }
 }
