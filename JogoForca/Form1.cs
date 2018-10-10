@@ -32,9 +32,21 @@ namespace JogoForca
         public Form1()
         {
             InitializeComponent();
-            
+
+            //Retira o foco dos botões e coloca-o no formulário para permitir que a entrada das letras seja feita apenas aprtando a tecla
+            this.Focus();
             _recomeca();
-            
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Focus();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            this.Focus();
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -142,6 +154,7 @@ namespace JogoForca
             lblPartida.Text = "Partida: " + _rodadaAtual.ToString();
             btnRecomecar.Enabled = false;
             btnResetarBoneco.Enabled = false;
+            
             _acabou = false;
 
             if(_rodadaAtual <= 1)
@@ -154,9 +167,7 @@ namespace JogoForca
                 //Senão apenas atualza os valores
                 _atualizaGrafico();
             }
-
-            //Retira o foco dos botões e coloca-o no formulário para permitir que a entrada das letras seja feita apenas aprtando a tecla
-            this.Focus();
+            
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -167,11 +178,10 @@ namespace JogoForca
         private void btnRecomecar_Click(object sender, EventArgs e)
         {
             _recomeca();
+
+            this.Focus();
         }
         
-        /// <summary>
-        /// Inicializa o gráfico, com as categorias e valor total
-        /// </summary>
         private void _inicializaGrafico()
         {
             graficoColunas1.Total = _rodadaAtual - 1;
@@ -180,9 +190,6 @@ namespace JogoForca
             graficoColunas1.IniciaPlot();
         }
 
-        /// <summary>
-        /// Atualiza os valores do gráfico em exibição
-        /// </summary>
         private void _atualizaGrafico()
         {
             //Para atualiza o gráfico basta alterar os valores aqui, pois o gráfico usa esses valroes diretamente para desenhar as barras
@@ -199,15 +206,15 @@ namespace JogoForca
                 List<Bitmap> partes = cust.Partes;
             }
 
-            //Remove o foco do botão
-            this.Focus();
             btnCustomizar.Enabled = false;
             btnCustomizar.Enabled = true;
+
+            //Remove o foco do botão
+            this.Focus();
         }
 
         private void btnResetarBoneco_Click(object sender, EventArgs e)
         {
-            //Apaga todos os arquivos do boneco do disco, para voltar a usar o boneco padrão
             try {
                 File.Delete("CABECA.png");
             } catch { }
@@ -241,11 +248,6 @@ namespace JogoForca
         private void label4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/FusRoDah061/JogoForca");
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.Focus();
         }
     }
 }
